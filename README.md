@@ -1,62 +1,53 @@
-# ❤️ Heart Failure Prediction
+# Heart Failure Mortality Prediction
 
 ![Python](https://img.shields.io/badge/Python-3.8%2B-blue)
 ![Scikit-learn](https://img.shields.io/badge/ML-Scikit--learn-orange)
 ![Pandas](https://img.shields.io/badge/Data-Pandas-blue)
 ![Status](https://img.shields.io/badge/Status-In%20Development-yellow)
 
-> **Predictive Healthcare:** A machine learning project designed to analyze clinical data and predict the likelihood of heart failure, helping to identify risk patterns in patients.
+Modelo com Machine Learning desenvolvido para analisar registros clínicos e prever a probabilidade de mortalidade em pacientes com insuficiência cardíaca.
 
 ---
 
-## 📋 About the Project
+## 🔬 Visão Geral
 
-This project focuses on building a **machine learning model** capable of predicting heart failure based on clinical patient data.
+A insuficiência cardíaca é um evento clínico complexo, e a identificação precoce de pacientes em risco é fundamental para o direcionamento médico assertivo. Este projeto utiliza um conjunto de dados clínicos com 12 variáveis (como fração de ejeção, creatinina sérica, idade e pressão arterial) para treinar e avaliar modelos preditivos de classificação.
 
-Using techniques from **data science and statistical analysis**, the system processes medical attributes such as age, creatinine levels, ejection fraction, and other health indicators to identify patterns related to mortality risk.
+O objetivo principal é demonstrar a aplicação de técnicas de ciência de dados na extração de padrões de saúde e no suporte à decisão baseada em evidências, focando em métricas críticas para o contexto hospitalar.
 
-The main goal is to explore how data-driven approaches can assist in **early risk detection and decision support**.
+## 🛠️ Metodologia e Funcionalidades
 
-### 🎯 Key Features
+Diferente de abordagens genéricas, este projeto prioriza a identificação correta de pacientes em risco (sensibilidade), visando minimizar falsos negativos em um cenário clínico.
 
-* **Exploratory Data Analysis (EDA):** Visualization and understanding of clinical variables.
-* **Data Preprocessing:** Cleaning, normalization, and preparation of the dataset.
-* **Multiple ML Models:** Includes algorithms like Logistic Regression, SVM, and KNN.
-* **Performance Evaluation:** Uses metrics such as accuracy, precision, recall, and F1-score.
-* **Correlation Analysis:** Identifies relationships between variables using heatmaps.
+* **Análise Exploratória de Dados (EDA):** Mapeamento de distribuições, análise de covariância e identificação da correlação entre marcadores biológicos e o desfecho de sobrevivência.
+* **Engenharia de Atributos:** Limpeza de dados, tratamento de outliers e normalização de variáveis contínuas (ex: níveis de plaquetas e creatinina).
+* **Modelagem Preditiva:** Implementação e comparação de performance entre múltiplos algoritmos:
+    * Regressão Logística (Baseline)
+    * Support Vector Machines (SVM)
+    * K-Nearest Neighbors (KNN)
+* **Avaliação de Desempenho:** Foco em métricas de triagem clínica, utilizando *Recall* (Sensibilidade), *Precision* e *F1-score*, além da análise detalhada via matriz de confusão.
 
----
+## 💻 Stack de tecnologias utilizadas
 
-## 🛠️ Technologies Used
-
-| Tool | Description |
+| Ferramenta | Aplicação no Projeto |
 | :--- | :--- |
-| **Python** | Core programming language |
-| **Pandas** | Data manipulation and analysis |
-| **NumPy** | Numerical operations |
-| **Scikit-learn** | Machine learning models |
-| **Matplotlib / Seaborn** | Data visualization |
+| **Python** | Linguagem base do pipeline de desenvolvimento |
+| **Pandas / NumPy** | Estruturação, limpeza e cálculos vetoriais |
+| **Scikit-learn** | Construção, treinamento e validação dos modelos ML |
+| **Matplotlib / Seaborn** | Geração de gráficos estatísticos e heatmaps de correlação |
 
----
-
-## ⚙️ Project Workflow
-
-The project follows a typical machine learning pipeline:
-
-1. **Data Loading:** Importing the clinical dataset
-2. **EDA:** Understanding distributions and detecting patterns
-3. **Preprocessing:** Handling missing values and scaling features
-4. **Train/Test Split:** Separating data for validation
-5. **Model Training:** Applying different ML algorithms
-6. **Evaluation:** Comparing model performance
-
----
-
-## 📁 Project Structure
+## 📁 Estrutura do Repositório
 
 ```text
-📂 Heart-Failure-Prediction
- ┣ 📜 heart_failure_clinical_records_dataset.csv
- ┣ 📜 main.py / notebook.ipynb
- ┣ 📜 requirements.txt
- ┗ 📜 README.md
+.
+├── data/
+│   └── heart_failure_clinical_records_dataset.csv  # Dataset original
+├── notebooks/
+│   └── eda_and_prototyping.ipynb                   # Análises e prototipagem
+├── src/
+│   └── main.py                                     # Script principal de execução
+├── requirements.txt                                # Dependências do projeto
+└── README.md
+```
+
+Projeto baseado no repositório do usuário [tkarim45](https://github.com/tkarim45/Beginner-Data-Science-Projects).
