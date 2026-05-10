@@ -36,18 +36,4 @@ Diferente de abordagens genéricas, este projeto prioriza a identificação corr
 | **Scikit-learn** | Construção, treinamento e validação dos modelos ML |
 | **Matplotlib / Seaborn** | Geração de gráficos estatísticos e heatmaps de correlação |
 
-## 📁 Estrutura do Repositório
-
-```text
-.
-├── data/
-│   └── heart_failure_clinical_records_dataset.csv  # Dataset original
-├── notebooks/
-│   └── eda_and_prototyping.ipynb                   # Análises e prototipagem
-├── src/
-│   └── main.py                                     # Script principal de execução
-├── requirements.txt                                # Dependências do projeto
-└── README.md
-```
-
 Projeto baseado no repositório do usuário [tkarim45](https://github.com/tkarim45/Beginner-Data-Science-Projects).
