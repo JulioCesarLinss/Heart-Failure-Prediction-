@@ -1,5 +1,6 @@
 import numpy as np
 import pandas as pd
+from sklearn.metrics import accuracy_score
 from sklearn import preprocessing
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
@@ -7,6 +8,7 @@ from sklearn.model_selection import GridSearchCV
 from sklearn import svm
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.linear_model import LogisticRegression
+from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import (
     
     accuracy_score,
@@ -21,6 +23,10 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 import warnings
+
+from sklearn.datasets import load_iris
+
+
 
 warnings.filterwarnings("ignore")
 
@@ -51,7 +57,7 @@ X_test = s_scaler.transform(X_test)
 
 #knn padrão
 
-print("Evaluation for K-Nearest Neighbors".center(75, "_"))
+
 
 knn_model = KNeighborsClassifier(n_neighbors=5)
 knn_model.fit(X_train, y_train)
@@ -100,12 +106,35 @@ knn_recall_pesado = recall_score(y_test, knn_pred_pesado)
 knn_f1_pesado = f1_score(y_test, knn_pred_pesado)
 
 #comparação na tela
-print("\n--- COMPARAÇÃO DE ACURÁCIA ---")
-print(f"KNN Padrão: {knn_accuracy:.4f}")
-print(f"KNN com Pesos Customizados: {knn_accuracy_pesado:.4f}")
 
-print("\n--- COMPARAÇÃO DE RECALL (Capacidade de detectar risco) ---")
-print(f"KNN Padrão - Recall: {knn_recall:.4f} | F1: {knn_f1:.4f}")
-print(f"KNN com Pesos - Recall: {knn_recall_pesado:.4f} | F1: {knn_f1_pesado:.4f}")
+print("Evaluation for K-Nearest Neighbors".center(75, "_"))
+print(f"Accuracy: {knn_accuracy:.4f}")
+print(f"Precision: {knn_precision:.4f}")
+print(f"Recall: {knn_recall:.4f}")
+print(f"F1 Score: {knn_f1:.4f}")
 
+print("Evaluation for Weighted K-Nearest Neighbors".center(75, "_"))
+print(f"Accuracy: {knn_accuracy_pesado:.4f}")
+print(f"Precision: {knn_precision_pesado:.4f}")
+print(f"Recall: {knn_recall_pesado:.4f}")
+print(f"F1 Score: {knn_f1_pesado:.4f}")
+
+
+
+# modelo random forest
+
+modelo_random_forest = RandomForestClassifier(n_estimators=100, random_state=25, class_weight='balanced', min_samples_split=10, max_depth=5)
+
+modelo_random_forest.fit(X_train, y_train)
+
+
+y_pred = modelo_random_forest.predict(X_test)
+
+
+print("Evaluation for Random Forest".center(75, "_"))
+print(f"Accuracy: {accuracy_score(y_test, y_pred):.4f}")
+print(f"Precision: {precision_score(y_test, y_pred):.4f}")
+print(f"Recall: {recall_score(y_test, y_pred):.4f}")
+print(f"F1 Score: {f1_score(y_test, y_pred):.4f}")
+print(classification_report(y_test, y_pred))
 
