@@ -59,14 +59,14 @@ X_test = s_scaler.transform(X_test)
 
 
 
-knn_model = KNeighborsClassifier(n_neighbors=5)
-knn_model.fit(X_train, y_train)
+#knn_model = KNeighborsClassifier(n_neighbors=5)
+#knn_model.fit(X_train, y_train)
 
-knn_pred = knn_model.predict(X_test)
-knn_accuracy = accuracy_score(y_test, knn_pred)
-knn_precision = precision_score(y_test, knn_pred)
-knn_recall = recall_score(y_test, knn_pred)
-knn_f1 = f1_score(y_test, knn_pred)
+##knn_pred = knn_model.predict(X_test)
+##knn_accuracy = accuracy_score(y_test, knn_pred)
+#knn_precision = precision_score(y_test, knn_pred)
+#knn_recall = recall_score(y_test, knn_pred)
+#knn_f1 = f1_score(y_test, knn_pred)
 
 #knn com peso
 
@@ -107,19 +107,39 @@ knn_f1_pesado = f1_score(y_test, knn_pred_pesado)
 
 #comparação na tela
 
-print("Evaluation for K-Nearest Neighbors".center(75, "_"))
-print(f"Accuracy: {knn_accuracy:.4f}")
-print(f"Precision: {knn_precision:.4f}")
-print(f"Recall: {knn_recall:.4f}")
-print(f"F1 Score: {knn_f1:.4f}")
+#print("Evaluation for K-Nearest Neighbors".center(75, "_"))
+#print(f"Accuracy: {knn_accuracy:.4f}")
+#print(f"Precision: {knn_precision:.4f}")
+#print(f"Recall: {knn_recall:.4f}")
+#print(f"F1 Score: {knn_f1:.4f}")
 
-print("Evaluation for Weighted K-Nearest Neighbors".center(75, "_"))
-print(f"Accuracy: {knn_accuracy_pesado:.4f}")
-print(f"Precision: {knn_precision_pesado:.4f}")
-print(f"Recall: {knn_recall_pesado:.4f}")
-print(f"F1 Score: {knn_f1_pesado:.4f}")
+#print("Evaluation for Weighted K-Nearest Neighbors".center(75, "_"))
+#print(f"Accuracy: {knn_accuracy_pesado:.4f}")
+#print(f"Precision: {knn_precision_pesado:.4f}")
+#print(f"Recall: {knn_recall_pesado:.4f}")
+#print(f"F1 Score: {knn_f1_pesado:.4f}")
 
+#modelo GridSearchCV
 
+param_grid = {
+    'n_neighbors': range(1,21),
+    'weights': ['uniform', 'distance'],
+    'metric': ['euclidean', 'manhattan']
+}
+
+grid = GridSearchCV(KNeighborsClassifier(), param_grid, cv =5, scoring ='f1')
+grid.fit(X_train, y_train)
+
+grid.best_params_
+grid_pred = grid.best_estimator_.predict(X_test)
+
+print("Evaluation for GridSearchCV".center(75,"_"))
+print(f"Accuracy: {accuracy_score(y_test, grid_pred):.4f}")
+print(f"Precision: {precision_score(y_test, grid_pred):.4f}")
+print(f"Recall: {recall_score(y_test, grid_pred):.4f}")
+print(f"F1 Score: {f1_score(y_test, grid_pred):.4f}")
+print(classification_report(y_test, grid_pred))
+print(f"Best parameters:{grid.best_params_}")
 
 # modelo random forest
 
@@ -130,11 +150,9 @@ modelo_random_forest.fit(X_train, y_train)
 
 y_pred = modelo_random_forest.predict(X_test)
 
-
-print("Evaluation for Random Forest".center(75, "_"))
-print(f"Accuracy: {accuracy_score(y_test, y_pred):.4f}")
-print(f"Precision: {precision_score(y_test, y_pred):.4f}")
-print(f"Recall: {recall_score(y_test, y_pred):.4f}")
-print(f"F1 Score: {f1_score(y_test, y_pred):.4f}")
-print(classification_report(y_test, y_pred))
-
+#print("Evaluation for Random Forest".center(75, "_"))
+#print(f"Accuracy: {accuracy_score(y_test, y_pred):.4f}")
+#print(f"Precision: {precision_score(y_test, y_pred):.4f}")
+#print(f"Recall: {recall_score(y_test, y_pred):.4f}")
+#print(f"F1 Score: {f1_score(y_test, y_pred):.4f}")
+#print(classification_report(y_test, y_pred))
