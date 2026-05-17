@@ -5,7 +5,7 @@
 ![Pandas](https://img.shields.io/badge/Data-Pandas-blue)
 ![Status](https://img.shields.io/badge/Status-In%20Development-yellow)
 
-Modelo com Machine Learning desenvolvido para analisar registros clínicos e prever a probabilidade de mortalidade em pacientes com insuficiência cardíaca.
+Modelo com Machine Learning desenvolvido para analisar registros clínicos e prever a probabilidade de mortalidade em pacientes com possibilidade de alguma insuficiência cardíaca.
 
 ---
 
