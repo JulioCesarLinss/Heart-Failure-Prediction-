@@ -158,7 +158,7 @@ pd.set_option('display.max_columns', None) #retira limitação de largura da tab
 #print(classification_report(y_test, y_pred))
 
 
-data_df = pd.read_csv("Medicaldataset.csv")
+data_df = pd.read_csv("./datasets/Medicaldataset.csv")
 data_df['Result'] = data_df['Result'].map({'negative': 0, 'positive': 1})
 data_df.head()
 data_df.info()
