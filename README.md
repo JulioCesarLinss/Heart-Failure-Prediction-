@@ -36,4 +36,4 @@ Diferente de abordagens genéricas, este projeto prioriza a identificação corr
 | **Scikit-learn** | Construção, treinamento e validação dos modelos ML |
 | **Matplotlib / Seaborn** | Geração de gráficos estatísticos e heatmaps de correlação |
 
-Projeto baseado no repositório do usuário [tkarim45](https://github.com/tkarim45/Beginner-Data-Science-Projects).
+Projeto baseado no repositório do usuário [tkarim45](https://github.com/tkarim45/Beginner-Data-Science-Projects). 
